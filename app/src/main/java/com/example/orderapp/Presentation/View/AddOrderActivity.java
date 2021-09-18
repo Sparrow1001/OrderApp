@@ -1,5 +1,6 @@
 package com.example.orderapp.Presentation.View;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,20 +9,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.orderapp.Presentation.ViewModel.OrderViewModel;
 import com.example.orderapp.R;
 
 public class AddOrderActivity extends AppCompatActivity {
-    public static final String EXTRA_PLACE =
-            "com.example.orderapp.Presentation.View.EXTRA_PLACE";
-    public static final String EXTRA_NUMOFVISITORS =
-            "com.example.orderapp.Presentation.View.EXTRA_NUMOFVISITORS";
-    public static final String EXTRA_ARRIVALTIME =
-            "com.example.orderapp.Presentation.View.EXTRA_ARRIVALTIME";
+//    public static final String EXTRA_PLACE =
+//            "com.example.orderapp.Presentation.View.EXTRA_PLACE";
+//    public static final String EXTRA_NUMOFVISITORS =
+//            "com.example.orderapp.Presentation.View.EXTRA_NUMOFVISITORS";
+//    public static final String EXTRA_ARRIVALTIME =
+//            "com.example.orderapp.Presentation.View.EXTRA_ARRIVALTIME";
 
     private EditText placeEt;
     private EditText numOfVisitorsEt;
     private EditText arrivalTimeEt;
     private Button button_save;
+
+    private OrderViewModel orderViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +45,21 @@ public class AddOrderActivity extends AppCompatActivity {
                 String numOfVisitors = numOfVisitorsEt.getText().toString();
                 String arrivalTime = arrivalTimeEt.getText().toString();
 
-                Intent data = new Intent();
-                data.putExtra(EXTRA_PLACE, place);
-                data.putExtra(EXTRA_NUMOFVISITORS, numOfVisitors);
-                data.putExtra(EXTRA_ARRIVALTIME, arrivalTime);
-
-                setResult(RESULT_OK, data);
+                orderViewModel = new OrderViewModel(getApplication());
+                orderViewModel.addOrder(place,Integer.parseInt(numOfVisitors), arrivalTime);
                 finish();
+
+//                Intent data = new Intent();
+//                data.putExtra(EXTRA_PLACE, place);
+//                data.putExtra(EXTRA_NUMOFVISITORS, numOfVisitors);
+//                data.putExtra(EXTRA_ARRIVALTIME, arrivalTime);
+//
+//                setResult(RESULT_OK, data);
+//                finish();
             }
         });
 
 
     }
+
 }

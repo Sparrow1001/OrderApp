@@ -1,13 +1,16 @@
 package com.example.orderapp.Presentation.ViewModel;
 
 import android.app.Application;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.orderapp.Presentation.Repository.Model.OrderDTO;
 import com.example.orderapp.Presentation.Repository.Room.OrderRepository;
+import com.example.orderapp.Presentation.View.AddOrderActivity;
 
 import java.util.List;
 
@@ -38,4 +41,12 @@ public class OrderViewModel extends AndroidViewModel {
         return allOrders;
     }
 
+    public void addOrder(String place,
+                         int numOfVisitors,
+                         String arrivalTime){
+
+        OrderDTO orderDTO = new OrderDTO("Evgeniy", place, arrivalTime, numOfVisitors);
+        insert(orderDTO);
+
+    }
 }

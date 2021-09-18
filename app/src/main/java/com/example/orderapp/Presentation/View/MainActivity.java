@@ -72,16 +72,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK){
-            String place = data.getStringExtra(AddOrderActivity.EXTRA_PLACE);
-            String numOfVisitors = data.getStringExtra(AddOrderActivity.EXTRA_NUMOFVISITORS);
-            String arrivalTime = data.getStringExtra(AddOrderActivity.EXTRA_ARRIVALTIME);
-
-            OrderDTO orderDTO = new OrderDTO("Evgeniy", place, arrivalTime, Integer.parseInt(numOfVisitors));
-            orderViewModel.insert(orderDTO);
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == 1 && resultCode == RESULT_OK){
+//            String place = data.getStringExtra(AddOrderActivity.EXTRA_PLACE);
+//            String numOfVisitors = data.getStringExtra(AddOrderActivity.EXTRA_NUMOFVISITORS);
+//            String arrivalTime = data.getStringExtra(AddOrderActivity.EXTRA_ARRIVALTIME);
+//
+//            OrderDTO orderDTO = new OrderDTO("Evgeniy", place, arrivalTime, Integer.parseInt(numOfVisitors));
+//            orderViewModel.insert(orderDTO);
+//        }
+//    }
 }
