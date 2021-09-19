@@ -32,12 +32,14 @@
             android:id="@+id/numOfVisitorsEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="number of visitors"/>
 
         <EditText
             android:id="@+id/arrivalTimeEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="false"
             android:hint="arrival time"/>
 
         <Button
