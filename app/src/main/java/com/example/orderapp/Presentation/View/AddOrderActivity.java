@@ -31,7 +31,6 @@ public class AddOrderActivity extends AppCompatActivity {
     private EditText numOfVisitorsEt;
     private EditText arrivalTimeEt;
     private Button button_save;
-    private String arrivalTime;
     private LocalDateTime time;
 
     private OrderViewModel orderViewModel;

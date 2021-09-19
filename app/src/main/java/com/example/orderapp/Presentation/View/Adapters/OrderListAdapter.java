@@ -31,8 +31,9 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
         OrderDTO currentOrder = orders.get(position);
         holder.placeTv.setText(currentOrder.getPlace());
         holder.nameTv.setText(currentOrder.getCustomer());
-        holder.numOfVisitorsTv.setText(String.valueOf(currentOrder.getNumOfVisitors()));
+        holder.numOfVisitorsTv.setText(String.valueOf(currentOrder.getNumOfVisitors()) + " visitors");
         holder.dateTv.setText(currentOrder.getArrivalTime());
+        holder.foodTv.setText("Your order: food, food, drink, drink");
     }
 
     @Override
@@ -55,6 +56,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
         private TextView nameTv;
         private TextView numOfVisitorsTv;
         private TextView dateTv;
+        private TextView foodTv;
 
         public OrderListHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,6 +64,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
             nameTv = itemView.findViewById(R.id.nameTv);
             numOfVisitorsTv = itemView.findViewById(R.id.numOfVisitorsTv);
             dateTv = itemView.findViewById(R.id.dateTv);
+            foodTv = itemView.findViewById(R.id.foodTv);
 
         }
     }
