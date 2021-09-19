@@ -1,12 +1,11 @@
-package com.example.orderapp.Presentation.Repository.Room;
+package com.example.orderapp.Repository.Room;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.orderapp.Domain.Model.Order;
-import com.example.orderapp.Presentation.Repository.Model.OrderDTO;
-import com.example.orderapp.Presentation.Repository.Room.DAO.OrderDAO;
+import com.example.orderapp.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Room.DAO.OrderDAO;
 
 import java.util.List;
 

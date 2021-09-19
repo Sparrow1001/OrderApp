@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.orderapp.Presentation.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Model.OrderDTO;
 import com.example.orderapp.R;
 
 import java.util.ArrayList;

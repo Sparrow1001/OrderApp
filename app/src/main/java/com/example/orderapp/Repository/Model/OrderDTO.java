@@ -1,4 +1,4 @@
-package com.example.orderapp.Presentation.Repository.Model;
+package com.example.orderapp.Repository.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

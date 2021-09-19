@@ -1,4 +1,4 @@
-package com.example.orderapp.Presentation.Repository.Room.DAO;
+package com.example.orderapp.Repository.Room.DAO;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -7,7 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.orderapp.Presentation.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Model.OrderDTO;
 
 import java.util.List;
 

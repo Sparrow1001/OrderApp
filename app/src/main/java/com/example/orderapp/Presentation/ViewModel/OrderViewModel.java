@@ -1,16 +1,13 @@
 package com.example.orderapp.Presentation.ViewModel;
 
 import android.app.Application;
-import android.content.Intent;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.orderapp.Presentation.Repository.Model.OrderDTO;
-import com.example.orderapp.Presentation.Repository.Room.OrderRepository;
-import com.example.orderapp.Presentation.View.AddOrderActivity;
+import com.example.orderapp.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Room.OrderRepository;
 
 import java.util.List;
 

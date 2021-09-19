@@ -1,7 +1,6 @@
 package com.example.orderapp.Presentation.View;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -12,9 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.orderapp.Presentation.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Model.OrderDTO;
 import com.example.orderapp.Presentation.View.Adapters.OrderListAdapter;
 import com.example.orderapp.Presentation.ViewModel.OrderViewModel;
 import com.example.orderapp.R;
