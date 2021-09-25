@@ -34,5 +34,9 @@ public class Repository {
         repository.delete(order);
     }
 
+    public LiveData<OrderDTO> getOrderById(int id){
+        return repository.getOrderById(id);
+    }
+
 
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.orderapp.Repository.Model.OrderDTO;
 import com.example.orderapp.Presentation.View.Adapters.OrderListAdapter;
@@ -76,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
                 Intent intent = new Intent(MainActivity.this, OrderDetailActivity.class);
+                intent.putExtra("id", (((OrderListAdapter) recyclerView.getAdapter()).getData().get(position)).getId());
                 startActivity(intent);
                 adapter.rewrite();
             }

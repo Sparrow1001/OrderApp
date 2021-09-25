@@ -12,6 +12,7 @@ import java.util.List;
 public class OrderRepository {
 
     private OrderDAO orderDAO;
+    private LiveData<OrderDTO> order;
     private LiveData<List<OrderDTO>> allOrders;
 
     public OrderRepository(Application application){
@@ -42,6 +43,10 @@ public class OrderRepository {
 
     public LiveData<List<OrderDTO>> getAllOrders(){
         return allOrders;
+    }
+
+    public LiveData<OrderDTO> getOrderById(int id){
+        return order = orderDAO.getOrderById(id);
     }
 
 }

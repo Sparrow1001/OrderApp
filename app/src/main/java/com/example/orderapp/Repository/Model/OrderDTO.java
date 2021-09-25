@@ -10,8 +10,7 @@ import org.jetbrains.annotations.NotNull;
 public class OrderDTO {
 
     @PrimaryKey(autoGenerate = true)
-    @NotNull
-    @ColumnInfo
+    @ColumnInfo(name = "id")
     public int id;
 
     @ColumnInfo

@@ -23,9 +23,6 @@ public class OrderViewModel extends AndroidViewModel {
         allOrders = rep.getAllOrders();
     }
 
-
-
-
     public void insert(OrderDTO order){
         rep.insert(order);
     }

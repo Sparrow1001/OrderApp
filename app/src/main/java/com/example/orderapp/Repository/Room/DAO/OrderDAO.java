@@ -26,4 +26,7 @@ public interface OrderDAO {
     @Query("SELECT * FROM `order`")
     LiveData<List<OrderDTO>> getAllOrders();
 
+    @Query("SELECT * FROM `order` WHERE id = :id")
+    LiveData<OrderDTO> getOrderById(int id);
+
 }
