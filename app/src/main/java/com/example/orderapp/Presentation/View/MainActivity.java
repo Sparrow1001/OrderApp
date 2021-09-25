@@ -2,6 +2,7 @@ package com.example.orderapp.Presentation.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -25,7 +26,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private OrderViewModel orderViewModel;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AddOrderActivity.class);
-                startActivityForResult(intent, 1);
+                startActivity(intent);
             }
         });
 
@@ -68,18 +68,20 @@ public class MainActivity extends AppCompatActivity {
             }
         }).attachToRecyclerView(recyclerView);
 
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
+                Intent intent = new Intent(MainActivity.this, OrderDetailActivity.class);
+                startActivity(intent);
+                adapter.rewrite();
+            }
+        }).attachToRecyclerView(recyclerView);
+
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 1 && resultCode == RESULT_OK){
-//            String place = data.getStringExtra(AddOrderActivity.EXTRA_PLACE);
-//            String numOfVisitors = data.getStringExtra(AddOrderActivity.EXTRA_NUMOFVISITORS);
-//            String arrivalTime = data.getStringExtra(AddOrderActivity.EXTRA_ARRIVALTIME);
-//
-//            OrderDTO orderDTO = new OrderDTO("Evgeniy", place, arrivalTime, Integer.parseInt(numOfVisitors));
-//            orderViewModel.insert(orderDTO);
-//        }
-//    }
 }

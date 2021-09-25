@@ -20,12 +20,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 public class AddOrderActivity extends AppCompatActivity {
-//    public static final String EXTRA_PLACE =
-//            "com.example.orderapp.Presentation.View.EXTRA_PLACE";
-//    public static final String EXTRA_NUMOFVISITORS =
-//            "com.example.orderapp.Presentation.View.EXTRA_NUMOFVISITORS";
-//    public static final String EXTRA_ARRIVALTIME =
-//            "com.example.orderapp.Presentation.View.EXTRA_ARRIVALTIME";
 
     private EditText placeEt;
     private EditText numOfVisitorsEt;
@@ -93,13 +87,7 @@ public class AddOrderActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(AddOrderActivity.this, "Заполните все поля", Toast.LENGTH_SHORT).show();
                 }
-//                Intent data = new Intent();
-//                data.putExtra(EXTRA_PLACE, place);
-//                data.putExtra(EXTRA_NUMOFVISITORS, numOfVisitors);
-//                data.putExtra(EXTRA_ARRIVALTIME, arrivalTime);
-//
-//                setResult(RESULT_OK, data);
-//                finish();
+
             }
         });
 

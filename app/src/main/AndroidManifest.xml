@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderApp">
         <activity
+            android:name=".Presentation.View.OrderDetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".Presentation.View.AddOrderActivity"
             android:exported="true" />
         <activity

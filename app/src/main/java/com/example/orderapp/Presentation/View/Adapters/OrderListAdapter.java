@@ -1,14 +1,19 @@
 package com.example.orderapp.Presentation.View.Adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.orderapp.Presentation.View.MainActivity;
+import com.example.orderapp.Presentation.View.OrderDetailActivity;
 import com.example.orderapp.Repository.Model.OrderDTO;
 import com.example.orderapp.R;
 
@@ -47,6 +52,10 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
         notifyDataSetChanged();
     }
 
+    public void rewrite(){
+        notifyDataSetChanged();
+    }
+
     public List<OrderDTO> getData() {
         return orders;
     }
@@ -57,6 +66,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
         private TextView numOfVisitorsTv;
         private TextView dateTv;
         private TextView foodTv;
+        private CardView orderCv;
 
         public OrderListHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,6 +75,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
             numOfVisitorsTv = itemView.findViewById(R.id.numOfVisitorsTv);
             dateTv = itemView.findViewById(R.id.dateTv);
             foodTv = itemView.findViewById(R.id.foodTv);
+            orderCv = itemView.findViewById(R.id.orderCv);
 
         }
     }
