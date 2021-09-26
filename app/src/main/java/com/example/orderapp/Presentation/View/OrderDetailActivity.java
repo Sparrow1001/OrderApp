@@ -1,12 +1,21 @@
 package com.example.orderapp.Presentation.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,12 +26,19 @@ import com.example.orderapp.Repository.Model.OrderDTO;
 
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class OrderDetailActivity extends AppCompatActivity {
 
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 100;
     private LiveData<OrderDTO> order;
     private OrderDetailViewModel orderDetailViewModel;
     private TextView restNameTv, customerTv, visitorsTv, dateTv, clickToCallTv;
-    private Button shareBtn;
+    private Button shareBtn, calendarBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +51,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         dateTv = findViewById(R.id.dateTv);
         clickToCallTv = findViewById(R.id.clickToCallTv);
         shareBtn = findViewById(R.id.shareBtn);
+        calendarBtn = findViewById(R.id.calendarBtn);
 
         orderDetailViewModel = new OrderDetailViewModel(getApplication());
 
@@ -48,9 +65,40 @@ public class OrderDetailActivity extends AppCompatActivity {
                 customerTv.setText(orderDTO.getCustomer());
                 visitorsTv.setText(String.valueOf(orderDTO.getNumOfVisitors()));
                 dateTv.setText(orderDTO.getArrivalTime());
-                Toast.makeText(OrderDetailActivity.this, ""+orderDTO.getPlace(), Toast.LENGTH_SHORT).show();
+
+                calendarBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(OrderDetailActivity.this,new String[]{Manifest.permission.WRITE_CALENDAR},MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                        }
+                        else if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_GRANTED){
+
+                        ContentResolver cr = getContentResolver();
+                        ContentValues cv = new ContentValues();
+
+                        Calendar startTime = Calendar.getInstance();
+                        SimpleDateFormat formater = new SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.ENGLISH);
+                            try {
+                                startTime.setTime(formater.parse(orderDTO.getArrivalTime()));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+
+                        cv.put(CalendarContract.Events.TITLE, orderDTO.getPlace());
+                        cv.put(CalendarContract.Events.DESCRIPTION, orderDTO.getCustomer() + "\n"+ orderDTO.getNumOfVisitors() + " visitors");
+                        cv.put(CalendarContract.Events.DTSTART, startTime.getTimeInMillis());
+                        cv.put(CalendarContract.Events.DTEND, startTime.getTimeInMillis()+1000*120*60);
+                        cv.put(CalendarContract.Events.CALENDAR_ID, 2);
+                        cv.put(CalendarContract.Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
+                        cr.insert(CalendarContract.Events.CONTENT_URI, cv);
+                        Toast.makeText(OrderDetailActivity.this, "Successfully added", Toast.LENGTH_SHORT).show();}
+                    }
+                });
             }
         });
+
 
     }
 }

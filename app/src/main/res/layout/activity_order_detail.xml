@@ -114,14 +114,33 @@
         android:textColor="@color/blue"
         android:textSize="15sp" />
 
-    <Button
-        android:id="@+id/shareBtn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        style="@style/Theme.AppCompat"
-        android:hint="Share order link"/>
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/shareBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            style="@style/Theme.AppCompat"
+            android:hint="Share order link"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/calendarBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            style="@style/Theme.AppCompat"
+            android:hint="Add to calendar"/>
+
+    </LinearLayout>
+
+
 
 
 
