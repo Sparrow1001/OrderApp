@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         FloatingActionButton buttAddOrder = findViewById(R.id.fab);
         buttAddOrder.setOnClickListener(new View.OnClickListener() {
@@ -87,4 +91,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Uri income = getIntent().getData();
+        if (income != null) {
+            String[] parts = income.toString().split("/");
+            String id = parts[parts.length - 1];
+            Intent intent = new Intent(MainActivity.this, OrderDetailActivity.class);
+            intent.putExtra("id", Integer.parseInt(id));
+            getIntent().setData(null);
+            startActivity(intent);
+        }
+    }
 }

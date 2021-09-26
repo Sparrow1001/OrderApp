@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.orderapp.Presentation.ViewModel.OrderDetailViewModel;
 import com.example.orderapp.R;
@@ -96,8 +97,26 @@ public class OrderDetailActivity extends AppCompatActivity {
                         Toast.makeText(OrderDetailActivity.this, "Successfully added", Toast.LENGTH_SHORT).show();}
                     }
                 });
+
+                shareBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent sendIntent = new Intent();
+                        sendIntent.setAction(Intent.ACTION_SEND);
+                        sendIntent.putExtra(Intent.EXTRA_TEXT, "https://or.order_app/" + orderDTO.getId());
+                        sendIntent.setType("text/plain");
+
+                        Intent shareIntent = Intent.createChooser(sendIntent, null);
+                        startActivity(shareIntent);
+
+                    }
+                });
+
             }
         });
+
+
 
 
     }
