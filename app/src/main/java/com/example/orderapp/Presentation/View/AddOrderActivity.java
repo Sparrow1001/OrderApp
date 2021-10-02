@@ -21,9 +21,7 @@ import java.util.Calendar;
 
 public class AddOrderActivity extends AppCompatActivity {
 
-    private EditText placeEt;
-    private EditText numOfVisitorsEt;
-    private EditText arrivalTimeEt;
+    private EditText placeEt, arrivalTimeEt, numOfVisitorsEt, timeOfStayEt, chooseFoodEt;
     private Button button_save;
     private LocalDateTime time;
 
@@ -39,6 +37,8 @@ public class AddOrderActivity extends AppCompatActivity {
         numOfVisitorsEt = findViewById(R.id.numOfVisitorsEt);
         arrivalTimeEt = findViewById(R.id.arrivalTimeEt);
         button_save = findViewById(R.id.button_save);
+        timeOfStayEt = findViewById(R.id.timeOfStayEt);
+        chooseFoodEt = findViewById(R.id.chooseFoodEt);
 
         arrivalTimeEt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +79,8 @@ public class AddOrderActivity extends AppCompatActivity {
                     String place = placeEt.getText().toString();
                     String numOfVisitors = numOfVisitorsEt.getText().toString();
                     String arrivalTime = arrivalTimeEt.getText().toString();
-
+                    String timeOfStay = timeOfStayEt.getText().toString();
+                    String chooseFood = chooseFoodEt.getText().toString();
 
                     orderViewModel = new OrderViewModel(getApplication());
                     orderViewModel.addOrder(place, Integer.parseInt(numOfVisitors), arrivalTime);

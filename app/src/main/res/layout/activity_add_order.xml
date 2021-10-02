@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".Presentation.View.AddOrderActivity">
 
     <LinearLayout
@@ -17,6 +18,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:layout_margin="15dp"
             android:text="Order a Table"
             android:textAlignment="center"
@@ -24,12 +26,16 @@
 
         <EditText
             android:id="@+id/placeEt"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="place"/>
 
         <EditText
             android:id="@+id/numOfVisitorsEt"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -37,25 +43,39 @@
 
         <EditText
             android:id="@+id/arrivalTimeEt"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="false"
             android:hint="arrival time"/>
+        <EditText
+            android:id="@+id/timeOfStayEt"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="time of stay"/>
 
-<!--        <EditText-->
-<!--            android:id="@+id/chooseFoodEt"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:focusable="false"-->
-<!--            android:hint="choose food and drinks"/>-->
+        <EditText
+            android:id="@+id/chooseFoodEt"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:hint="choose food and drinks"/>
 
         <Button
             android:id="@+id/button_save"
+            android:backgroundTint="@color/dark_grey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:text="Save"
+            android:text="Add order"
+            android:textColor="@color/white"
             android:textAllCaps="false" />
 
     </LinearLayout>

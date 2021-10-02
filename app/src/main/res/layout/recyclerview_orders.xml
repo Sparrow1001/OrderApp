@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/orderCv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp">
+        android:layout_marginBottom="5dp"
+        app:cardBackgroundColor="@color/grey">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Bloody Mary Bar"
+                android:textColor="@color/white"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
 
             <TextView
@@ -27,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ivan Ivanov"
+                android:textColor="@color/white"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
@@ -34,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="3 Visitors"
+                android:textColor="@color/white"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
@@ -41,6 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="2021.09.12    21:30"
+                android:textColor="@color/white"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
@@ -48,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Your order: food, food, drink, drink"
+                android:textColor="@color/white"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
 

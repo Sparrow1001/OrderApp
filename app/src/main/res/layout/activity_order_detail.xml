@@ -5,35 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/grey"
     tools:context=".Presentation.View.OrderDetailActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Restaurant name:  "
             android:textStyle="bold"
+            android:textColor="@color/white"
             android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/restNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="Any Bar"
             android:textSize="14sp"/>
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="Customer:  "
             android:textStyle="bold"
             android:textSize="16sp"/>
@@ -42,18 +48,21 @@
             android:id="@+id/customerTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="Ivanov Ivan"
             android:textSize="14sp"/>
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Num of visitors:  "
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="16sp"/>
 
@@ -61,18 +70,21 @@
             android:id="@+id/visitorsTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="8"
             android:textSize="14sp"/>
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order date:  "
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="16sp"/>
 
@@ -81,18 +93,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="24.09.2021 23:05"
+            android:textColor="@color/white"
             android:textSize="14sp"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Your order:  "
+            android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="16sp"/>
 
@@ -101,42 +116,64 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="food, food, drink, drink"
+            android:textColor="@color/white"
             android:textSize="14sp"/>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/clickToCallTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Click to call the restaurant"
-        android:textColor="@color/blue"
-        android:textSize="15sp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center">
 
-        <Button
+        <ImageButton
             android:id="@+id/shareBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            style="@style/Theme.AppCompat"
-            android:hint="Share order link"
-            android:layout_weight="1"/>
-
-        <Button
+            android:layout_marginRight="25dp"
+            android:src="@drawable/ic_share_white"
+            android:background="@color/dark_grey"
+            />
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="25dp"
+            android:src="@drawable/ic__phone_white"
+            android:background="@color/dark_grey"
+            />
+        <ImageButton
             android:id="@+id/calendarBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
-            style="@style/Theme.AppCompat"
-            android:hint="Add to calendar"/>
+            android:layout_marginRight="25dp"
+            android:src="@drawable/ic_calendar_white"
+            android:background="@color/dark_grey"
+            />
+
+<!--        <Button-->
+<!--            android:id="@+id/shareBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            style="@style/Theme.AppCompat"-->
+<!--            android:hint="Share order link"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            android:layout_weight="1"/>-->
+
+<!--        <Button-->
+<!--            android:id="@+id/calendarBtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            style="@style/Theme.AppCompat"-->
+<!--            android:hint="Add to calendar"-->
+<!--            android:textColorHint="@color/white"/>-->
 
     </LinearLayout>
 

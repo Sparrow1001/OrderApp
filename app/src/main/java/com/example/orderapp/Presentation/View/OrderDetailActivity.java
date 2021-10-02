@@ -4,42 +4,37 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.orderapp.Presentation.ViewModel.OrderDetailViewModel;
 import com.example.orderapp.R;
 import com.example.orderapp.Repository.Model.OrderDTO;
-
-import org.w3c.dom.Text;
+import com.example.orderapp.Repository.Repository;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 public class OrderDetailActivity extends AppCompatActivity {
 
-    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 100;
+    private static final int MY_PERMISSIONS_REQUEST_ACCESS = 100;
     private LiveData<OrderDTO> order;
     private OrderDetailViewModel orderDetailViewModel;
     private TextView restNameTv, customerTv, visitorsTv, dateTv, clickToCallTv;
-    private Button shareBtn, calendarBtn;
+    private ImageButton shareBtn, calendarBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +45,6 @@ public class OrderDetailActivity extends AppCompatActivity {
         customerTv = findViewById(R.id.customerTv);
         visitorsTv = findViewById(R.id.visitorsTv);
         dateTv = findViewById(R.id.dateTv);
-        clickToCallTv = findViewById(R.id.clickToCallTv);
         shareBtn = findViewById(R.id.shareBtn);
         calendarBtn = findViewById(R.id.calendarBtn);
 
@@ -72,7 +66,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                     public void onClick(View view) {
 
                         if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(OrderDetailActivity.this,new String[]{Manifest.permission.WRITE_CALENDAR},MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+                            ActivityCompat.requestPermissions(OrderDetailActivity.this,new String[]{Manifest.permission.WRITE_CALENDAR}, MY_PERMISSIONS_REQUEST_ACCESS);
                         }
                         else if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_CALENDAR) == PackageManager.PERMISSION_GRANTED){
 
