@@ -33,7 +33,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_ACCESS = 100;
     private LiveData<OrderDTO> order;
     private OrderDetailViewModel orderDetailViewModel;
-    private TextView restNameTv, customerTv, visitorsTv, dateTv, clickToCallTv;
+    private TextView restNameTv, customerTv, visitorsTv, dateTv, orderTv;
     private ImageButton shareBtn, calendarBtn;
 
     @Override
@@ -47,6 +47,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         dateTv = findViewById(R.id.dateTv);
         shareBtn = findViewById(R.id.shareBtn);
         calendarBtn = findViewById(R.id.calendarBtn);
+        orderTv = findViewById(R.id.orderTv);
 
         orderDetailViewModel = new OrderDetailViewModel(getApplication());
 
@@ -60,6 +61,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 customerTv.setText(orderDTO.getCustomer());
                 visitorsTv.setText(String.valueOf(orderDTO.getNumOfVisitors()));
                 dateTv.setText(orderDTO.getArrivalTime());
+                orderTv.setText(orderDTO.getChooseFood());
 
                 calendarBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -82,9 +84,9 @@ public class OrderDetailActivity extends AppCompatActivity {
                             }
 
                         cv.put(CalendarContract.Events.TITLE, orderDTO.getPlace());
-                        cv.put(CalendarContract.Events.DESCRIPTION, orderDTO.getCustomer() + "\n"+ orderDTO.getNumOfVisitors() + " visitors");
+                        cv.put(CalendarContract.Events.DESCRIPTION, orderDTO.getCustomer() + "\n"+ orderDTO.getNumOfVisitors() + " visitors"+ "\n" + orderDTO.getChooseFood());
                         cv.put(CalendarContract.Events.DTSTART, startTime.getTimeInMillis());
-                        cv.put(CalendarContract.Events.DTEND, startTime.getTimeInMillis()+1000*120*60);
+                        cv.put(CalendarContract.Events.DTEND, startTime.getTimeInMillis()+1000*60*60*orderDTO.getTimeOfStay());
                         cv.put(CalendarContract.Events.CALENDAR_ID, 2);
                         cv.put(CalendarContract.Events.EVENT_TIMEZONE, Calendar.getInstance().getTimeZone().getID());
                         cr.insert(CalendarContract.Events.CONTENT_URI, cv);

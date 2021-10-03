@@ -21,15 +21,37 @@ public class OrderDTO {
     public String arrivalTime;
     @ColumnInfo
     public int numOfVisitors;
+    @ColumnInfo
+    public int timeOfStay;
+    @ColumnInfo
+    public String chooseFood;
 
     public OrderDTO() {
     }
 
-    public OrderDTO(String customer, String place, String arrivalTime, int numOfVisitors) {
+    public OrderDTO(String customer, String place, String arrivalTime, int numOfVisitors, int timeOfStay, String chooseFood) {
         this.customer = customer;
         this.place = place;
         this.arrivalTime = arrivalTime;
         this.numOfVisitors = numOfVisitors;
+        this.timeOfStay = timeOfStay;
+        this.chooseFood = chooseFood;
+    }
+
+    public int getTimeOfStay() {
+        return timeOfStay;
+    }
+
+    public void setTimeOfStay(int timeOfStay) {
+        this.timeOfStay = timeOfStay;
+    }
+
+    public String getChooseFood() {
+        return chooseFood;
+    }
+
+    public void setChooseFood(String chooseFood) {
+        this.chooseFood = chooseFood;
     }
 
     public int getId() {

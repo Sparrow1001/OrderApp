@@ -80,10 +80,10 @@ public class AddOrderActivity extends AppCompatActivity {
                     String numOfVisitors = numOfVisitorsEt.getText().toString();
                     String arrivalTime = arrivalTimeEt.getText().toString();
                     String timeOfStay = timeOfStayEt.getText().toString();
-                    String chooseFood = chooseFoodEt.getText().toString();
+                    String choosedFood = chooseFoodEt.getText().toString();
 
                     orderViewModel = new OrderViewModel(getApplication());
-                    orderViewModel.addOrder(place, Integer.parseInt(numOfVisitors), arrivalTime);
+                    orderViewModel.addOrder(place, Integer.parseInt(numOfVisitors), arrivalTime, Integer.parseInt(timeOfStay), choosedFood);
                     finish();
                 }else {
                     Toast.makeText(AddOrderActivity.this, "Заполните все поля", Toast.LENGTH_SHORT).show();

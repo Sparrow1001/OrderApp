@@ -37,8 +37,9 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
         holder.placeTv.setText(currentOrder.getPlace());
         holder.nameTv.setText(currentOrder.getCustomer());
         holder.numOfVisitorsTv.setText(String.valueOf(currentOrder.getNumOfVisitors()) + " visitors");
-        holder.dateTv.setText(currentOrder.getArrivalTime());
-        holder.foodTv.setText("Your order: food, food, drink, drink");
+        holder.dateTv.setText(currentOrder.getArrivalTime() + " within " + currentOrder.getTimeOfStay() + " hours");
+        holder.foodTv.setText("Your order: "+ currentOrder.getChooseFood());
+
     }
 
     @Override
