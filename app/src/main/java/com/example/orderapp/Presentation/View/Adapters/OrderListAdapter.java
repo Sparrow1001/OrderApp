@@ -16,6 +16,7 @@ import com.example.orderapp.Presentation.View.MainActivity;
 import com.example.orderapp.Presentation.View.OrderDetailActivity;
 import com.example.orderapp.Repository.Model.OrderDTO;
 import com.example.orderapp.R;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
         private TextView numOfVisitorsTv;
         private TextView dateTv;
         private TextView foodTv;
-        private CardView orderCv;
+        private MaterialCardView orderCv;
 
         public OrderListHolder(@NonNull View itemView) {
             super(itemView);

@@ -12,7 +12,7 @@ import com.example.orderapp.Repository.Room.DAO.OrderDAO;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {OrderDTO.class}, version = 2)
+@Database(entities = {OrderDTO.class}, version = 3)
 public abstract class OrderRoomDatabase extends RoomDatabase {
 
     public abstract OrderDAO orderDAO();

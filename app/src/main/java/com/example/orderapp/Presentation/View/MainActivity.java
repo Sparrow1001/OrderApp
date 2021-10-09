@@ -22,6 +22,7 @@ import com.example.orderapp.Presentation.View.Adapters.OrderListAdapter;
 import com.example.orderapp.Presentation.ViewModel.OrderViewModel;
 import com.example.orderapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.yandex.mapkit.MapKitFactory;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -29,11 +30,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private OrderViewModel orderViewModel;
+    private final String MAPKIT_API_KEY = "7eae52ac-04d9-47ab-9b5a-322998a0964a";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MapKitFactory.setApiKey(MAPKIT_API_KEY);
+        MapKitFactory.initialize(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().hide();
 
         FloatingActionButton buttAddOrder = findViewById(R.id.fab);
         buttAddOrder.setOnClickListener(new View.OnClickListener() {

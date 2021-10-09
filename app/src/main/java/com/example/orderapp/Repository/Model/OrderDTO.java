@@ -2,6 +2,7 @@ package com.example.orderapp.Repository.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,17 +26,29 @@ public class OrderDTO {
     public int timeOfStay;
     @ColumnInfo
     public String chooseFood;
+    @ColumnInfo
+    public String address;
 
+    @Ignore
     public OrderDTO() {
     }
 
-    public OrderDTO(String customer, String place, String arrivalTime, int numOfVisitors, int timeOfStay, String chooseFood) {
+    public OrderDTO(String customer, String place, String arrivalTime, int numOfVisitors, int timeOfStay, String chooseFood, String address) {
         this.customer = customer;
         this.place = place;
         this.arrivalTime = arrivalTime;
         this.numOfVisitors = numOfVisitors;
         this.timeOfStay = timeOfStay;
         this.chooseFood = chooseFood;
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getTimeOfStay() {

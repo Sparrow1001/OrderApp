@@ -24,13 +24,11 @@
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"/>
 
-        <EditText
-            android:id="@+id/placeEt"
-            android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
+        <Spinner
+            android:id="@+id/placeSp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="place"/>
+            android:entries="@array/restaurans"/>
 
         <EditText
             android:id="@+id/numOfVisitorsEt"

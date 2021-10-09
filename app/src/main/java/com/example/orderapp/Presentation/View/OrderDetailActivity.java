@@ -1,6 +1,7 @@
 package com.example.orderapp.Presentation.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
@@ -12,8 +13,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +22,11 @@ import android.widget.Toast;
 import com.example.orderapp.Presentation.ViewModel.OrderDetailViewModel;
 import com.example.orderapp.R;
 import com.example.orderapp.Repository.Model.OrderDTO;
-import com.example.orderapp.Repository.Repository;
+import com.yandex.mapkit.Animation;
+import com.yandex.mapkit.MapKitFactory;
+import com.yandex.mapkit.geometry.Point;
+import com.yandex.mapkit.map.CameraPosition;
+import com.yandex.mapkit.mapview.MapView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,15 +36,26 @@ import java.util.Locale;
 public class OrderDetailActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS = 100;
-    private LiveData<OrderDTO> order;
     private OrderDetailViewModel orderDetailViewModel;
-    private TextView restNameTv, customerTv, visitorsTv, dateTv, orderTv;
+    private TextView restNameTv, customerTv, visitorsTv, dateTv, orderTv, addressTv;
     private ImageButton shareBtn, calendarBtn;
+    private MapView mapview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
+        super.onCreate(savedInstanceState);
+
+        mapview = (MapView)findViewById(R.id.map);
+        mapview.getMap().move(
+                new CameraPosition(new Point(55.660511, 37.225386), 17.0f, 0.0f, 0.0f),
+                new Animation(Animation.Type.SMOOTH, 0),
+                null);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         restNameTv = findViewById(R.id.restNameTv);
         customerTv = findViewById(R.id.customerTv);
@@ -48,6 +64,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         shareBtn = findViewById(R.id.shareBtn);
         calendarBtn = findViewById(R.id.calendarBtn);
         orderTv = findViewById(R.id.orderTv);
+        addressTv = findViewById(R.id.addressTv);
 
         orderDetailViewModel = new OrderDetailViewModel(getApplication());
 
@@ -62,6 +79,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 visitorsTv.setText(String.valueOf(orderDTO.getNumOfVisitors()));
                 dateTv.setText(orderDTO.getArrivalTime());
                 orderTv.setText(orderDTO.getChooseFood());
+                addressTv.setText(orderDTO.getAddress());
 
                 calendarBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -112,8 +130,25 @@ public class OrderDetailActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.finish();
+        return true;
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mapview.onStop();
+        MapKitFactory.getInstance().onStop();
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mapview.onStart();
+        MapKitFactory.getInstance().onStart();
     }
 }

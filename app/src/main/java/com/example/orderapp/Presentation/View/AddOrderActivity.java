@@ -1,14 +1,19 @@
 package com.example.orderapp.Presentation.View;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -21,9 +26,10 @@ import java.util.Calendar;
 
 public class AddOrderActivity extends AppCompatActivity {
 
-    private EditText placeEt, arrivalTimeEt, numOfVisitorsEt, timeOfStayEt, chooseFoodEt;
+    private EditText arrivalTimeEt, numOfVisitorsEt, timeOfStayEt, chooseFoodEt;
     private Button button_save;
     private LocalDateTime time;
+    private Spinner placeSp;
 
     private OrderViewModel orderViewModel;
 
@@ -32,13 +38,21 @@ public class AddOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_order);
+        getSupportActionBar().hide();
 
-        placeEt = findViewById(R.id.placeEt);
+        placeSp = findViewById(R.id.placeSp);
         numOfVisitorsEt = findViewById(R.id.numOfVisitorsEt);
         arrivalTimeEt = findViewById(R.id.arrivalTimeEt);
         button_save = findViewById(R.id.button_save);
         timeOfStayEt = findViewById(R.id.timeOfStayEt);
         chooseFoodEt = findViewById(R.id.chooseFoodEt);
+
+        chooseFoodEt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                showFoodChooseDialog();
+            }
+        });
 
         arrivalTimeEt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,15 +89,37 @@ public class AddOrderActivity extends AppCompatActivity {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!placeEt.getText().toString().isEmpty()) {
-                    String place = placeEt.getText().toString();
+                if(!placeSp.getSelectedItem().toString().isEmpty() &&
+                        !numOfVisitorsEt.getText().toString().isEmpty() &&
+                        !arrivalTimeEt.getText().toString().isEmpty() &&
+                        !timeOfStayEt.getText().toString().isEmpty() &&
+                        !chooseFoodEt.getText().toString().isEmpty())
+                {
+                    String place = placeSp.getSelectedItem().toString();
                     String numOfVisitors = numOfVisitorsEt.getText().toString();
                     String arrivalTime = arrivalTimeEt.getText().toString();
                     String timeOfStay = timeOfStayEt.getText().toString();
                     String choosedFood = chooseFoodEt.getText().toString();
+                    String address = "";
+
+                    if (placeSp.getSelectedItem().toString().equals("Ресторан Одинцово")){
+                        address = "улица Маршала Неделина, 9А";
+                    } else if (placeSp.getSelectedItem().toString().equals("Ресторан Москва Юг")){
+                        address = "1-й Дорожный проезд, 5";
+                    }else if (placeSp.getSelectedItem().toString().equals("Ресторан Москва Запад")){
+                        address = "Кунцевская улица, 15";
+                    }else if (placeSp.getSelectedItem().toString().equals("Ресторан Москва Север")){
+                        address = "Дубнинская улица, 16к1";
+                    }else if (placeSp.getSelectedItem().toString().equals("Ресторан Лыткарино")){
+                        address = "Коммунистическая улица, 18";
+                    }
 
                     orderViewModel = new OrderViewModel(getApplication());
-                    orderViewModel.addOrder(place, Integer.parseInt(numOfVisitors), arrivalTime, Integer.parseInt(timeOfStay), choosedFood);
+                    orderViewModel.addOrder(place,
+                            Integer.parseInt(numOfVisitors),
+                            arrivalTime,
+                            Integer.parseInt(timeOfStay),
+                            choosedFood, address);
                     finish();
                 }else {
                     Toast.makeText(AddOrderActivity.this, "Заполните все поля", Toast.LENGTH_SHORT).show();
@@ -95,4 +131,24 @@ public class AddOrderActivity extends AppCompatActivity {
 
     }
 
+//    private void showFoodChooseDialog(){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Вы хотите сделать заказ заранее");
+//
+//        builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//            }
+//        });
+//
+//        builder.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//            }
+//        });
+//
+//        builder.create().show();
+//    }
 }

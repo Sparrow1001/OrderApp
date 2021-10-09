@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Order App</string>
+
+    <string-array name="restaurans">
+        <item>Ресторан Одинцово</item>
+        <item>Ресторан Москва Юг</item>
+        <item>Ресторан Москва Запад</item>
+        <item>Ресторан Москва Север</item>
+        <item>Ресторан Лыткарино</item>
+    </string-array>
 </resources>

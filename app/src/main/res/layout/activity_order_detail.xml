@@ -8,10 +8,10 @@
     android:background="@color/grey"
     tools:context=".Presentation.View.OrderDetailActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="10dp"
         android:gravity="center">
 
         <TextView
@@ -31,6 +31,30 @@
             android:textSize="14sp"/>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Address: "
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/addressTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="something address"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -145,10 +169,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="center">
+        android:layout_gravity="center"
+        android:background="@drawable/customborder">
 
         <ImageButton
             android:id="@+id/shareBtn"
@@ -171,32 +196,24 @@
             android:id="@+id/calendarBtn"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="25dp"
             android:src="@drawable/ic_calendar_white"
             android:background="@color/dark_grey"
             />
 
-<!--        <Button-->
-<!--            android:id="@+id/shareBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            style="@style/Theme.AppCompat"-->
-<!--            android:hint="Share order link"-->
-<!--            android:textColorHint="@color/white"-->
-<!--            android:layout_weight="1"/>-->
+    </LinearLayout>
 
-<!--        <Button-->
-<!--            android:id="@+id/calendarBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            style="@style/Theme.AppCompat"-->
-<!--            android:hint="Add to calendar"-->
-<!--            android:textColorHint="@color/white"/>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp">
+
+        <com.yandex.mapkit.mapview.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
