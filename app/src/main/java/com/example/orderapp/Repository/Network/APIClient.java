@@ -1,5 +1,7 @@
 package com.example.orderapp.Repository.Network;
 
+import com.example.orderapp.Repository.Model.Coordinate;
+
 import java.util.List;
 
 import retrofit2.Call;

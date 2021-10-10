@@ -1,4 +1,4 @@
-package com.example.orderapp.Repository.Network;
+package com.example.orderapp.Repository.Model;
 
 public class Geo_center {
     private String lon;

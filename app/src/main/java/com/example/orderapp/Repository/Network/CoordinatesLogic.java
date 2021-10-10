@@ -1,14 +1,14 @@
 package com.example.orderapp.Repository.Network;
 
-import static android.content.ContentValues.TAG;
-
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.orderapp.Repository.Model.Coordinate;
+import com.example.orderapp.Repository.Model.Geo_center;
+
 import java.security.cert.CertificateException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.net.ssl.HostnameVerifier;

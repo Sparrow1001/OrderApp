@@ -1,4 +1,4 @@
-package com.example.orderapp.Repository.Network;
+package com.example.orderapp.Repository.Model;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,11 +1,7 @@
 package com.example.orderapp.Presentation.View;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 import android.Manifest;
@@ -15,8 +11,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.CalendarContract;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -25,18 +19,16 @@ import android.widget.Toast;
 import com.example.orderapp.Presentation.ViewModel.OrderDetailViewModel;
 import com.example.orderapp.R;
 import com.example.orderapp.Repository.Model.OrderDTO;
-import com.example.orderapp.Repository.Network.Geo_center;
+import com.example.orderapp.Repository.Model.Geo_center;
 import com.yandex.mapkit.Animation;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
 import com.yandex.mapkit.map.CameraPosition;
 import com.yandex.mapkit.mapview.MapView;
-import com.yandex.runtime.image.ImageProvider;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 public class OrderDetailActivity extends AppCompatActivity {

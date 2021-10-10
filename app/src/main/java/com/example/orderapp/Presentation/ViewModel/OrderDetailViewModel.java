@@ -7,11 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.orderapp.Repository.Model.OrderDTO;
-import com.example.orderapp.Repository.Network.CoordinatesLogic;
-import com.example.orderapp.Repository.Network.Geo_center;
+import com.example.orderapp.Repository.Model.Geo_center;
 import com.example.orderapp.Repository.Repository;
-
-import java.util.List;
 
 public class OrderDetailViewModel extends AndroidViewModel {
     private Repository rep = new Repository();
