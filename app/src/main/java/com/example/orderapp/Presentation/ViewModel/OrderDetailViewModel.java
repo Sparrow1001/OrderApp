@@ -7,7 +7,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.orderapp.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Network.CoordinatesLogic;
 import com.example.orderapp.Repository.Repository;
+
+import java.util.List;
 
 public class OrderDetailViewModel extends AndroidViewModel {
     private Repository rep = new Repository();
@@ -21,5 +24,8 @@ public class OrderDetailViewModel extends AndroidViewModel {
         return rep.getOrderById(id);
     }
 
+    public LiveData<String> getCoordinate(){
+        return rep.getCoordinate();
+    }
 
 }

@@ -38,7 +38,6 @@ public class AddOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_order);
-        getSupportActionBar().hide();
 
         placeSp = findViewById(R.id.placeSp);
         numOfVisitorsEt = findViewById(R.id.numOfVisitorsEt);
@@ -103,15 +102,15 @@ public class AddOrderActivity extends AppCompatActivity {
                     String address = "";
 
                     if (placeSp.getSelectedItem().toString().equals("Ресторан Одинцово")){
-                        address = "улица Маршала Неделина, 9А";
+                        address = "Одинцово, улица Маршала Неделина, 9А";
                     } else if (placeSp.getSelectedItem().toString().equals("Ресторан Москва Юг")){
-                        address = "1-й Дорожный проезд, 5";
+                        address = "Москва, 1-й Дорожный проезд, 5";
                     }else if (placeSp.getSelectedItem().toString().equals("Ресторан Москва Запад")){
-                        address = "Кунцевская улица, 15";
+                        address = "Москва, Кунцевская улица, 15";
                     }else if (placeSp.getSelectedItem().toString().equals("Ресторан Москва Север")){
-                        address = "Дубнинская улица, 16к1";
+                        address = "Москва, Дубнинская улица, 16к1";
                     }else if (placeSp.getSelectedItem().toString().equals("Ресторан Лыткарино")){
-                        address = "Коммунистическая улица, 18";
+                        address = "Лыткарино, Коммунистическая улица, 18";
                     }
 
                     orderViewModel = new OrderViewModel(getApplication());

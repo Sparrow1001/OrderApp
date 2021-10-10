@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.orderapp.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Network.CoordinatesLogic;
 import com.example.orderapp.Repository.Room.OrderRepository;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 public class Repository {
     private OrderRepository repository;
     private LiveData<List<OrderDTO>> allOrders;
+    private CoordinatesLogic coordinatesLogic = new CoordinatesLogic();
 
     public void initBase(Application application){
 
@@ -36,6 +38,10 @@ public class Repository {
 
     public LiveData<OrderDTO> getOrderById(int id){
         return repository.getOrderById(id);
+    }
+
+    public LiveData<String> getCoordinate(){
+        return coordinatesLogic.getCoordinate();
     }
 
 

@@ -31,6 +31,7 @@ import com.yandex.mapkit.mapview.MapView;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class OrderDetailActivity extends AppCompatActivity {
@@ -40,6 +41,9 @@ public class OrderDetailActivity extends AppCompatActivity {
     private TextView restNameTv, customerTv, visitorsTv, dateTv, orderTv, addressTv;
     private ImageButton shareBtn, calendarBtn;
     private MapView mapview;
+
+    private String lat;
+    private Double lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +56,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                 new Animation(Animation.Type.SMOOTH, 0),
                 null);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-        }
+
 
         restNameTv = findViewById(R.id.restNameTv);
         customerTv = findViewById(R.id.customerTv);
@@ -80,6 +81,15 @@ public class OrderDetailActivity extends AppCompatActivity {
                 dateTv.setText(orderDTO.getArrivalTime());
                 orderTv.setText(orderDTO.getChooseFood());
                 addressTv.setText(orderDTO.getAddress());
+
+                orderDetailViewModel.getCoordinate().observe(OrderDetailActivity.this, new Observer<String>() {
+                    @Override
+                    public void onChanged(String s) {
+                        lat = s;
+                    }
+                });
+
+                Toast.makeText(OrderDetailActivity.this, ""+lat, Toast.LENGTH_SHORT).show();
 
                 calendarBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -130,12 +140,6 @@ public class OrderDetailActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        this.finish();
-        return true;
     }
 
     @Override
