@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.orderapp.Repository.Model.OrderDTO;
 import com.example.orderapp.Repository.Network.CoordinatesLogic;
+import com.example.orderapp.Repository.Network.Geo_center;
 import com.example.orderapp.Repository.Room.OrderRepository;
 
 import java.util.List;
@@ -40,8 +41,8 @@ public class Repository {
         return repository.getOrderById(id);
     }
 
-    public LiveData<String> getCoordinate(){
-        return coordinatesLogic.getCoordinate();
+    public LiveData<Geo_center> getCoordinate(String query){
+        return coordinatesLogic.getCoordinate(query);
     }
 
 

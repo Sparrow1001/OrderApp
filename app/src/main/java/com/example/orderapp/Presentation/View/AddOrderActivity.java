@@ -102,15 +102,15 @@ public class AddOrderActivity extends AppCompatActivity {
                     String address = "";
 
                     if (placeSp.getSelectedItem().toString().equals("Ресторан Одинцово")){
-                        address = "Одинцово, улица Маршала Неделина, 9А";
+                        address = "Одинцово, улица Маршала Неделина, 9 ";
                     } else if (placeSp.getSelectedItem().toString().equals("Ресторан Москва Юг")){
-                        address = "Москва, 1-й Дорожный проезд, 5";
+                        address = "Москва, 1-й Дорожный проезд, 5 ";
                     }else if (placeSp.getSelectedItem().toString().equals("Ресторан Москва Запад")){
-                        address = "Москва, Кунцевская улица, 15";
+                        address = "Москва, Кунцевская улица, 15 ";
                     }else if (placeSp.getSelectedItem().toString().equals("Ресторан Москва Север")){
-                        address = "Москва, Дубнинская улица, 16к1";
+                        address = "Москва, Дубнинская улица, 16 ";
                     }else if (placeSp.getSelectedItem().toString().equals("Ресторан Лыткарино")){
-                        address = "Лыткарино, Коммунистическая улица, 18";
+                        address = "Лыткарино, Коммунистическая улица, 18 ";
                     }
 
                     orderViewModel = new OrderViewModel(getApplication());

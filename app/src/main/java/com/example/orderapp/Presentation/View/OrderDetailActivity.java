@@ -1,5 +1,7 @@
 package com.example.orderapp.Presentation.View;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -13,6 +15,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -22,11 +25,13 @@ import android.widget.Toast;
 import com.example.orderapp.Presentation.ViewModel.OrderDetailViewModel;
 import com.example.orderapp.R;
 import com.example.orderapp.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Network.Geo_center;
 import com.yandex.mapkit.Animation;
 import com.yandex.mapkit.MapKitFactory;
 import com.yandex.mapkit.geometry.Point;
 import com.yandex.mapkit.map.CameraPosition;
 import com.yandex.mapkit.mapview.MapView;
+import com.yandex.runtime.image.ImageProvider;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,22 +46,13 @@ public class OrderDetailActivity extends AppCompatActivity {
     private TextView restNameTv, customerTv, visitorsTv, dateTv, orderTv, addressTv;
     private ImageButton shareBtn, calendarBtn;
     private MapView mapview;
-
-    private String lat;
+    private Double lat;
     private Double lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_order_detail);
         super.onCreate(savedInstanceState);
-
-        mapview = (MapView)findViewById(R.id.map);
-        mapview.getMap().move(
-                new CameraPosition(new Point(55.660511, 37.225386), 17.0f, 0.0f, 0.0f),
-                new Animation(Animation.Type.SMOOTH, 0),
-                null);
-
-
 
         restNameTv = findViewById(R.id.restNameTv);
         customerTv = findViewById(R.id.customerTv);
@@ -68,6 +64,9 @@ public class OrderDetailActivity extends AppCompatActivity {
         addressTv = findViewById(R.id.addressTv);
 
         orderDetailViewModel = new OrderDetailViewModel(getApplication());
+        mapview = (MapView)findViewById(R.id.map);
+
+
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", 0);
@@ -82,14 +81,18 @@ public class OrderDetailActivity extends AppCompatActivity {
                 orderTv.setText(orderDTO.getChooseFood());
                 addressTv.setText(orderDTO.getAddress());
 
-                orderDetailViewModel.getCoordinate().observe(OrderDetailActivity.this, new Observer<String>() {
+                orderDetailViewModel.getCoordinate(orderDTO.getAddress()).observe(OrderDetailActivity.this, new Observer<Geo_center>() {
                     @Override
-                    public void onChanged(String s) {
-                        lat = s;
+                    public void onChanged(Geo_center geo_center) {
+                        lat = Double.parseDouble(geo_center.getLat());
+                        lon = Double.parseDouble(geo_center.getLon());
+                        mapview.getMap().move(
+                                new CameraPosition(new Point(lat, lon), 16.0f, 0.0f, 0.0f),
+                                new Animation(Animation.Type.SMOOTH, 0),
+                                null);
+                        mapview.getMap().getMapObjects().addPlacemark(new Point(lat, lon));
                     }
                 });
-
-                Toast.makeText(OrderDetailActivity.this, ""+lat, Toast.LENGTH_SHORT).show();
 
                 calendarBtn.setOnClickListener(new View.OnClickListener() {
                     @Override

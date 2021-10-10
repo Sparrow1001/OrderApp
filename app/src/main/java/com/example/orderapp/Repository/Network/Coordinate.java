@@ -2,6 +2,8 @@ package com.example.orderapp.Repository.Network;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Coordinate {
 
     private Geo_center geo_center;
@@ -27,6 +29,8 @@ public class Coordinate {
     {
         this.value = value;
     }
+
+    List<Geo_center> geo_centerList;
 
     @Override
     public String toString() {
