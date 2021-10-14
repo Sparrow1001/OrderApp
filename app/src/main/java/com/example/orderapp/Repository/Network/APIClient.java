@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 
 public interface APIClient {
 
-    @GET("address.php?key=s9CEluxAEtMl")
-    Call<List<Coordinate>> getCoordinateFromAPI(@Query("term") String address, @Query("fields")String fields);
+    @GET("address.php?")
+    Call<List<Coordinate>> getCoordinateFromAPI(@Query("key") String key, @Query("term") String address, @Query("fields")String fields);
 
 }

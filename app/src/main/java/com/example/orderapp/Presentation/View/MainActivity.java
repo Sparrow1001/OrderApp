@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.orderapp.BuildConfig;
 import com.example.orderapp.Repository.Model.OrderDTO;
 import com.example.orderapp.Presentation.View.Adapters.OrderListAdapter;
 import com.example.orderapp.Presentation.ViewModel.OrderViewModel;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        MapKitFactory.setApiKey(MAPKIT_API_KEY);
+        MapKitFactory.setApiKey(BuildConfig.YANDEX_API_KEY);
         MapKitFactory.initialize(this);
 
         super.onCreate(savedInstanceState);

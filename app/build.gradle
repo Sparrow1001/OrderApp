@@ -12,6 +12,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "YANDEX_API_KEY", "\"7eae52ac-04d9-47ab-9b5a-322998a0964a\""
+        buildConfigField "String", "GEOTREE_API_KEY", "\"s9CEluxAEtMl\""
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -24,6 +27,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
     }
 
 

@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.orderapp.BuildConfig;
 import com.example.orderapp.Repository.Model.Coordinate;
 import com.example.orderapp.Repository.Model.Geo_center;
 
@@ -85,7 +86,7 @@ public class CoordinatesLogic {
 
         MutableLiveData<Geo_center> coordinates = new MutableLiveData<>();
 
-        Call<List<Coordinate>> call = api.getCoordinateFromAPI(query, "value,geo_center");
+        Call<List<Coordinate>> call = api.getCoordinateFromAPI(BuildConfig.GEOTREE_API_KEY, query, "value,geo_center");
         call.enqueue(new Callback<List<Coordinate>>() {
             @Override
             public void onResponse(Call<List<Coordinate>> call, Response<List<Coordinate>> response) {

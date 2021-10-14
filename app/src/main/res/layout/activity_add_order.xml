@@ -18,11 +18,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
             android:layout_margin="15dp"
             android:text="Order a Table"
             android:textAlignment="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"/>
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+            android:textColor="@color/white" />
 
         <Spinner
             android:id="@+id/placeSp"
@@ -32,48 +32,49 @@
 
         <EditText
             android:id="@+id/numOfVisitorsEt"
-            android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:hint="number of visitors"
             android:inputType="number"
-            android:hint="number of visitors"/>
+            android:textColorHint="@color/white" />
 
         <EditText
             android:id="@+id/arrivalTimeEt"
-            android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
             android:focusable="false"
-            android:hint="arrival time"/>
+            android:hint="arrival time"
+            android:textColorHint="@color/white" />
+
         <EditText
             android:id="@+id/timeOfStayEt"
-            android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:hint="time of stay"
             android:inputType="number"
-            android:hint="time of stay"/>
+            android:textColorHint="@color/white" />
 
         <EditText
             android:id="@+id/chooseFoodEt"
-            android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="choose food and drinks"/>
+            android:backgroundTint="@color/white"
+            android:hint="choose food and drinks"
+            android:textColorHint="@color/white" />
 
         <Button
             android:id="@+id/button_save"
-            android:backgroundTint="@color/dark_grey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
+            android:backgroundTint="@color/dark_grey"
             android:text="Add order"
-            android:textColor="@color/white"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
