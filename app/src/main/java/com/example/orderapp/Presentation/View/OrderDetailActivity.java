@@ -107,7 +107,10 @@ public class OrderDetailActivity extends AppCompatActivity {
                             }
 
                         cv.put(CalendarContract.Events.TITLE, orderDTO.getPlace());
-                        cv.put(CalendarContract.Events.DESCRIPTION, orderDTO.getCustomer() + "\n"+ orderDTO.getNumOfVisitors() + " visitors"+ "\n" + orderDTO.getChooseFood());
+                        cv.put(CalendarContract.Events.DESCRIPTION, orderDTO.getCustomer() + "\n"
+                                + orderDTO.getNumOfVisitors() + " visitors"+ "\n"
+                                + orderDTO.getChooseFood() + "\n"
+                                + orderDTO.getAddress());
                         cv.put(CalendarContract.Events.DTSTART, startTime.getTimeInMillis());
                         cv.put(CalendarContract.Events.DTEND, startTime.getTimeInMillis()+1000*60*60*orderDTO.getTimeOfStay());
                         cv.put(CalendarContract.Events.CALENDAR_ID, 2);

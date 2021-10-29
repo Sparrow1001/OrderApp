@@ -1,4 +1,4 @@
-package com.example.orderapp.Repository.Network;
+package com.example.orderapp.Repository.Network.MapsAPI;
 
 import android.util.Log;
 
@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.orderapp.BuildConfig;
 import com.example.orderapp.Repository.Model.Coordinate;
 import com.example.orderapp.Repository.Model.Geo_center;
+import com.example.orderapp.Repository.Network.MapsAPI.APIClient;
 
 import java.security.cert.CertificateException;
 import java.util.List;

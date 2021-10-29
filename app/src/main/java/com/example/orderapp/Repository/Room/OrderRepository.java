@@ -6,32 +6,35 @@ import androidx.lifecycle.LiveData;
 
 import com.example.orderapp.Repository.Model.OrderDTO;
 import com.example.orderapp.Repository.Room.DAO.OrderDAO;
+import com.example.orderapp.Repository.Room.DAO.PersonDAO;
 
 import java.util.List;
 
 public class OrderRepository {
 
     private OrderDAO orderDAO;
+    private PersonDAO personDAO;
     private LiveData<OrderDTO> order;
     private LiveData<List<OrderDTO>> allOrders;
 
     public OrderRepository(Application application){
         OrderRoomDatabase database = OrderRoomDatabase.getDatabase(application);
         orderDAO = database.orderDAO();
+        personDAO = database.personDAO();
         allOrders= orderDAO.getAllOrders();
     }
 
-    public void insert(OrderDTO order){
+    public void insertOrder(OrderDTO order){
         OrderRoomDatabase.databaseWriteExecutor.execute(() -> {
             orderDAO.addOrder(((OrderDTO) order));
         });
     }
 
-    public void update(OrderDTO order){
+    public void updateOrder(OrderDTO order){
 
     }
 
-    public void delete(OrderDTO order){
+    public void deleteOrder(OrderDTO order){
         OrderRoomDatabase.databaseWriteExecutor.execute(() -> {
             orderDAO.deleteOrder(((OrderDTO) order));
         });

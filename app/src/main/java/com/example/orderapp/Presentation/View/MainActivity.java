@@ -31,7 +31,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private OrderViewModel orderViewModel;
-    private final String MAPKIT_API_KEY = "7eae52ac-04d9-47ab-9b5a-322998a0964a";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

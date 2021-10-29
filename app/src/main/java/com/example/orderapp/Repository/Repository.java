@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.orderapp.Repository.Model.OrderDTO;
-import com.example.orderapp.Repository.Network.CoordinatesLogic;
+import com.example.orderapp.Repository.Network.MapsAPI.CoordinatesLogic;
 import com.example.orderapp.Repository.Model.Geo_center;
 import com.example.orderapp.Repository.Room.OrderRepository;
 
@@ -30,11 +30,11 @@ public class Repository {
     }
 
     public void insert(OrderDTO order){
-        repository.insert(order);
+        repository.insertOrder(order);
     }
 
     public void delete(OrderDTO order){
-        repository.delete(order);
+        repository.deleteOrder(order);
     }
 
     public LiveData<OrderDTO> getOrderById(int id){
