@@ -62,12 +62,13 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", 0);
+        String name = intent.getStringExtra("name");
 
         orderDetailViewModel.getOrderById(id).observe(this, new Observer<OrderDTO>() {
             @Override
             public void onChanged(OrderDTO orderDTO) {
                 restNameTv.setText(orderDTO.getPlace());
-                customerTv.setText(orderDTO.getCustomer());
+                customerTv.setText(name);
                 visitorsTv.setText(String.valueOf(orderDTO.getNumOfVisitors()));
                 dateTv.setText(orderDTO.getArrivalTime());
                 orderTv.setText(orderDTO.getChooseFood());
@@ -107,7 +108,10 @@ public class OrderDetailActivity extends AppCompatActivity {
                             }
 
                         cv.put(CalendarContract.Events.TITLE, orderDTO.getPlace());
-                        cv.put(CalendarContract.Events.DESCRIPTION, orderDTO.getCustomer() + "\n"+ orderDTO.getNumOfVisitors() + " visitors"+ "\n" + orderDTO.getChooseFood());
+                        cv.put(CalendarContract.Events.DESCRIPTION, orderDTO.getCustomer() + "\n"
+                                + orderDTO.getNumOfVisitors() + " visitors"+ "\n"
+                                + orderDTO.getChooseFood() + "\n"
+                                + orderDTO.getAddress());
                         cv.put(CalendarContract.Events.DTSTART, startTime.getTimeInMillis());
                         cv.put(CalendarContract.Events.DTEND, startTime.getTimeInMillis()+1000*60*60*orderDTO.getTimeOfStay());
                         cv.put(CalendarContract.Events.CALENDAR_ID, 2);

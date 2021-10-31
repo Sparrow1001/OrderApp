@@ -1,4 +1,4 @@
-package com.example.orderapp.Repository.Network;
+package com.example.orderapp.Repository.Network.MapsAPI;
 
 import com.example.orderapp.Repository.Model.Coordinate;
 

@@ -30,6 +30,7 @@ public class AddOrderActivity extends AppCompatActivity {
     private Button button_save;
     private LocalDateTime time;
     private Spinner placeSp;
+    private String name;
 
     private OrderViewModel orderViewModel;
 
@@ -52,6 +53,8 @@ public class AddOrderActivity extends AppCompatActivity {
 //                showFoodChooseDialog();
             }
         });
+
+        name = getIntent().getStringExtra("name");
 
         arrivalTimeEt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +117,8 @@ public class AddOrderActivity extends AppCompatActivity {
                     }
 
                     orderViewModel = new OrderViewModel(getApplication());
-                    orderViewModel.addOrder(place,
+                    orderViewModel.addOrder(name,
+                            place,
                             Integer.parseInt(numOfVisitors),
                             arrivalTime,
                             Integer.parseInt(timeOfStay),
