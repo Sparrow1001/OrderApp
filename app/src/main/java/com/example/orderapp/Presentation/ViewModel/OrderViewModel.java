@@ -33,14 +33,15 @@ public class OrderViewModel extends AndroidViewModel {
         return allOrders;
     }
 
-    public void addOrder(String place,
+    public void addOrder(String name,
+                         String place,
                          int numOfVisitors,
                          String arrivalTime,
                          int timeOfStay,
                          String choosedFood,
                          String address){
 
-        OrderDTO orderDTO = new OrderDTO("Evgeniy", place, arrivalTime, numOfVisitors, timeOfStay, choosedFood, address);
+        OrderDTO orderDTO = new OrderDTO(name, place, arrivalTime, numOfVisitors, timeOfStay, choosedFood, address);
         insert(orderDTO);
 
     }
