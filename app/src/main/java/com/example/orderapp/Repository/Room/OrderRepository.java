@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.orderapp.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Model.PersonDTO;
 import com.example.orderapp.Repository.Room.DAO.OrderDAO;
 import com.example.orderapp.Repository.Room.DAO.PersonDAO;
 
@@ -27,6 +28,12 @@ public class OrderRepository {
     public void insertOrder(OrderDTO order){
         OrderRoomDatabase.databaseWriteExecutor.execute(() -> {
             orderDAO.addOrder(((OrderDTO) order));
+        });
+    }
+
+    public void insertPerson(PersonDTO person){
+        OrderRoomDatabase.databaseWriteExecutor.execute(() -> {
+            personDAO.addPerson(((PersonDTO) person));
         });
     }
 

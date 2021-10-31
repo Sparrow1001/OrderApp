@@ -16,7 +16,7 @@ import com.example.orderapp.Repository.Room.DAO.PersonDAO;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {OrderDTO.class, PersonDTO.class}, version = 3)
+@Database(entities = {OrderDTO.class, PersonDTO.class}, version = 4, exportSchema = false)
 public abstract class OrderRoomDatabase extends RoomDatabase {
 
     public abstract OrderDAO orderDAO();

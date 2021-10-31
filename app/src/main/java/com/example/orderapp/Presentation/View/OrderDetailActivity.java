@@ -62,12 +62,13 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", 0);
+        String name = intent.getStringExtra("name");
 
         orderDetailViewModel.getOrderById(id).observe(this, new Observer<OrderDTO>() {
             @Override
             public void onChanged(OrderDTO orderDTO) {
                 restNameTv.setText(orderDTO.getPlace());
-                customerTv.setText(orderDTO.getCustomer());
+                customerTv.setText(name);
                 visitorsTv.setText(String.valueOf(orderDTO.getNumOfVisitors()));
                 dateTv.setText(orderDTO.getArrivalTime());
                 orderTv.setText(orderDTO.getChooseFood());

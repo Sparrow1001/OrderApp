@@ -15,20 +15,14 @@ public class PersonDTO {
     public String lastName;
     @ColumnInfo
     public String email;
-    @ColumnInfo
-    public String password;
-    @ColumnInfo
-    public String phone;
 
     public PersonDTO() {
     }
 
-    public PersonDTO(String firstName, String lastName, String email, String password, String phone) {
+    public PersonDTO(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
-        this.phone = phone;
     }
 
     public int getId() {
@@ -61,21 +55,5 @@ public class PersonDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 }

@@ -31,6 +31,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private OrderViewModel orderViewModel;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        name = getIntent().getStringExtra("name");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView_orders);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 int position = viewHolder.getAdapterPosition();
                 Intent intent = new Intent(MainActivity.this, OrderDetailActivity.class);
                 intent.putExtra("id", (((OrderListAdapter) recyclerView.getAdapter()).getData().get(position)).getId());
+                intent.putExtra("name", name);
                 startActivity(intent);
                 adapter.rewrite();
             }
