@@ -15,14 +15,37 @@ public class PersonDTO {
     public String lastName;
     @ColumnInfo
     public String email;
+    @ColumnInfo
+    public String phone;
+    @ColumnInfo
+    public String password;
+
 
     public PersonDTO() {
     }
 
-    public PersonDTO(String firstName, String lastName, String email) {
+    public PersonDTO(String firstName, String lastName, String email, String phone, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.phone = phone;
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {

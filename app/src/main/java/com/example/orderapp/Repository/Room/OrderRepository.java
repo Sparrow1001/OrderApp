@@ -37,6 +37,10 @@ public class OrderRepository {
         });
     }
 
+    public LiveData<PersonDTO> checkPerson(String email, String password){
+        return personDAO.checkPerson(email, password);
+    }
+
     public void updateOrder(OrderDTO order){
 
     }

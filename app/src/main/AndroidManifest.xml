@@ -14,10 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderApp">
         <activity
+            android:name=".Presentation.View.RegisterActivity"
+            android:exported="true" />
+        <activity
             android:name=".Presentation.View.LoginActivity"
             android:exported="true"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.OrderApp.NoActionBar" >
+            android:theme="@style/Theme.OrderApp.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

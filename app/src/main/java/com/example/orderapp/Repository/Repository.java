@@ -38,6 +38,10 @@ public class Repository {
         repository.insertPerson(person);
     }
 
+    public LiveData<PersonDTO> checkPerson(String email, String password){
+        return repository.checkPerson(email, password);
+    }
+
 
     public void delete(OrderDTO order){
         repository.deleteOrder(order);
