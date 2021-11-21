@@ -22,8 +22,8 @@ public class LoginViewModel extends AndroidViewModel {
         rep.insertPerson(person);
     }
 
-    public LiveData<PersonDTO> checkPerson(String email, String password){
-        return rep.checkPerson(email, password);
+    public LiveData<PersonDTO> getPersonByEmailAndPassword(String email, String password){
+        return rep.getPersonByEmailAndPassword(email, password);
     }
 
 }

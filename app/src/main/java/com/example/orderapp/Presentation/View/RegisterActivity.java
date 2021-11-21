@@ -51,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                     person.setEmail(email);
                     person.setPhone(phone);
                     person.setPassword(password);
+                    person.setRole("user");
 
                     loginViewModel = new LoginViewModel(getApplication());
                     loginViewModel.insertPerson(person);

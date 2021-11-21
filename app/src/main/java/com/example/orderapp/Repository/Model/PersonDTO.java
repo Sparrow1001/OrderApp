@@ -19,17 +19,28 @@ public class PersonDTO {
     public String phone;
     @ColumnInfo
     public String password;
+    @ColumnInfo
+    public String role;
 
 
     public PersonDTO() {
     }
 
-    public PersonDTO(String firstName, String lastName, String email, String phone, String password) {
+    public PersonDTO(String firstName, String lastName, String email, String phone, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.role = role;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getPhone() {

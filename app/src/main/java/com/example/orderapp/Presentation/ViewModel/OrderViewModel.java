@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.orderapp.Repository.Model.OrderDTO;
+import com.example.orderapp.Repository.Model.PersonDTO;
 import com.example.orderapp.Repository.Repository;
 import com.example.orderapp.Repository.Room.OrderRepository;
 
@@ -26,14 +27,25 @@ public class OrderViewModel extends AndroidViewModel {
     public void insert(OrderDTO order){
         rep.insert(order);
     }
+
     public void delete(OrderDTO order){
         rep.delete(order);
     }
+
     public LiveData<List<OrderDTO>> getAllOrders(){
         return allOrders;
     }
 
+    public LiveData<List<OrderDTO>> getOrdersByEmail(String email){
+        return rep.getOrdersByEmail(email);
+    }
+
+    public LiveData<PersonDTO> getPersonByEmail(String email){
+        return rep.getPersonByEmail(email);
+    }
+
     public void addOrder(String name,
+                         String customerEmail,
                          String place,
                          int numOfVisitors,
                          String arrivalTime,
@@ -41,7 +53,7 @@ public class OrderViewModel extends AndroidViewModel {
                          String choosedFood,
                          String address){
 
-        OrderDTO orderDTO = new OrderDTO(name, place, arrivalTime, numOfVisitors, timeOfStay, choosedFood, address);
+        OrderDTO orderDTO = new OrderDTO(name, customerEmail, place, arrivalTime, numOfVisitors, timeOfStay, choosedFood, address);
         insert(orderDTO);
 
     }

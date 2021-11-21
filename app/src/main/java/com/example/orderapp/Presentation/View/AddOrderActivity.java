@@ -31,6 +31,7 @@ public class AddOrderActivity extends AppCompatActivity {
     private LocalDateTime time;
     private Spinner placeSp;
     private String name;
+    private String email;
 
     private OrderViewModel orderViewModel;
 
@@ -55,6 +56,7 @@ public class AddOrderActivity extends AppCompatActivity {
         });
 
         name = getIntent().getStringExtra("name");
+        email = getIntent().getStringExtra("email");
 
         arrivalTimeEt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +120,7 @@ public class AddOrderActivity extends AppCompatActivity {
 
                     orderViewModel = new OrderViewModel(getApplication());
                     orderViewModel.addOrder(name,
+                            email,
                             place,
                             Integer.parseInt(numOfVisitors),
                             arrivalTime,

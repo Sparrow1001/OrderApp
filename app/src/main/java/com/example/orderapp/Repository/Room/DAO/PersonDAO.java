@@ -22,6 +22,9 @@ public interface PersonDAO {
     void updatePerson(PersonDTO person);
 
     @Query("SELECT * FROM 'person' WHERE email = :email AND password = :password")
-    LiveData<PersonDTO> checkPerson(String email, String password);
+    LiveData<PersonDTO> getPersonByEmailAndPassword(String email, String password);
+
+    @Query("SELECT * FROM 'person' WHERE email = :email")
+    LiveData<PersonDTO> getPersonByEmail(String email);
 
 }

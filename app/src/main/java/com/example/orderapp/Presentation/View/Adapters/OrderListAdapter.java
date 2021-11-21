@@ -23,6 +23,14 @@ import java.util.List;
 
 public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.OrderListHolder> {
     private List<OrderDTO> orders = new ArrayList<>();
+    String name;
+
+    public OrderListAdapter(String name){
+        this.name = name;
+    }
+
+    public OrderListAdapter() {
+    }
 
     @NonNull
     @Override

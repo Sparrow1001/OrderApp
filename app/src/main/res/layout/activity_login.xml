@@ -28,7 +28,7 @@
             android:id="@+id/loginEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Login"
+            android:hint="Email"
             android:textColorHint="@color/white"
             android:backgroundTint="@color/white"
             android:layout_marginLeft="30dp"

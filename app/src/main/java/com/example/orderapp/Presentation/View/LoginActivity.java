@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -77,10 +78,19 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 loginViewModel = new LoginViewModel(getApplication());
-                loginViewModel.checkPerson(loginEt.getText().toString().trim(),
+                loginViewModel.getPersonByEmailAndPassword(loginEt.getText().toString().trim(),
                         passwordEt.getText().toString().trim()).observe(LoginActivity.this, new Observer<PersonDTO>() {
                     @Override
                     public void onChanged(PersonDTO personDTO) {
+
+                        if (personDTO != null){
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("email", personDTO.getEmail());
+                            startActivity(intent);
+                            finish();
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Неправильный логин или пароль", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 });
@@ -109,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
             person.setEmail(account.getEmail());
             person.setFirstName(account.getGivenName());
             person.setLastName(account.getFamilyName());
+            person.setRole("user");
             loginViewModel.insertPerson(person);
 
             updateUI(account);
@@ -121,6 +132,7 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUI(GoogleSignInAccount account){
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.putExtra("name", account.getDisplayName());
+        intent.putExtra("email", account.getEmail());
         startActivity(intent);
         finish();
     }
