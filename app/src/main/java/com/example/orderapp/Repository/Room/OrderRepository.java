@@ -37,6 +37,14 @@ public class OrderRepository {
         });
     }
 
+    public LiveData<PersonDTO> getPersonByEmailAndPassword(String email, String password){
+        return personDAO.getPersonByEmailAndPassword(email, password);
+    }
+
+    public LiveData<PersonDTO> getPersonByEmail(String email){
+        return personDAO.getPersonByEmail(email);
+    }
+
     public void updateOrder(OrderDTO order){
 
     }
@@ -57,6 +65,10 @@ public class OrderRepository {
 
     public LiveData<OrderDTO> getOrderById(int id){
         return order = orderDAO.getOrderById(id);
+    }
+
+    public LiveData<List<OrderDTO>> getOrdersByEmail(String email){
+        return orderDAO.getOrdersByEmail(email);
     }
 
 }

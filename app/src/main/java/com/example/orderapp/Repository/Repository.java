@@ -38,6 +38,13 @@ public class Repository {
         repository.insertPerson(person);
     }
 
+    public LiveData<PersonDTO> getPersonByEmailAndPassword(String email, String password){
+        return repository.getPersonByEmailAndPassword(email, password);
+    }
+
+    public LiveData<PersonDTO> getPersonByEmail(String email){
+        return repository.getPersonByEmail(email);
+    }
 
     public void delete(OrderDTO order){
         repository.deleteOrder(order);
@@ -45,6 +52,10 @@ public class Repository {
 
     public LiveData<OrderDTO> getOrderById(int id){
         return repository.getOrderById(id);
+    }
+
+    public LiveData<List<OrderDTO>> getOrdersByEmail(String email){
+        return repository.getOrdersByEmail(email);
     }
 
     public LiveData<Geo_center> getCoordinate(String query){

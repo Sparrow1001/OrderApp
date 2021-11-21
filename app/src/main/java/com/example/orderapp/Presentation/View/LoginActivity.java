@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 
 
 import com.example.orderapp.Presentation.ViewModel.LoginViewModel;
@@ -24,17 +27,23 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 public class LoginActivity extends AppCompatActivity {
-    private Button loginBt;
+    private TextView signWithGoogleTv, registerTv;
     private GoogleSignInClient mGoogleSignInClient;
     private GoogleSignInAccount account;
     private LoginViewModel loginViewModel;
+    private Button loginBt;
+    private EditText loginEt, passwordEt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        signWithGoogleTv = findViewById(R.id.signWithGoogleTv);
+        registerTv = findViewById(R.id.registerTv);
         loginBt = findViewById(R.id.loginBt);
+        loginEt = findViewById(R.id.loginEt);
+        passwordEt = findViewById(R.id.passwordEt);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -47,11 +56,45 @@ public class LoginActivity extends AppCompatActivity {
             updateUI(account);
         }
 
-        loginBt.setOnClickListener(new View.OnClickListener() {
+        registerTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        signWithGoogleTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, 100);
+            }
+        });
+
+        loginBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                loginViewModel = new LoginViewModel(getApplication());
+                loginViewModel.getPersonByEmailAndPassword(loginEt.getText().toString().trim(),
+                        passwordEt.getText().toString().trim()).observe(LoginActivity.this, new Observer<PersonDTO>() {
+                    @Override
+                    public void onChanged(PersonDTO personDTO) {
+
+                        if (personDTO != null){
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("email", personDTO.getEmail());
+                            startActivity(intent);
+                            finish();
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Неправильный логин или пароль", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
             }
         });
 
@@ -72,13 +115,20 @@ public class LoginActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             loginViewModel = new LoginViewModel(getApplication());
 
-            PersonDTO person = new PersonDTO();
-            person.setEmail(account.getEmail());
-            person.setFirstName(account.getGivenName());
-            person.setLastName(account.getFamilyName());
-            loginViewModel.insertPerson(person);
-
-            updateUI(account);
+            loginViewModel.getPersonByEmail(account.getEmail()).observe(this, new Observer<PersonDTO>() {
+                @Override
+                public void onChanged(PersonDTO personDTO) {
+                    if (personDTO == null) {
+                        PersonDTO person = new PersonDTO();
+                        person.setEmail(account.getEmail());
+                        person.setFirstName(account.getGivenName());
+                        person.setLastName(account.getFamilyName());
+                        person.setRole("user");
+                        loginViewModel.insertPerson(person);
+                    }
+                    updateUI(account);
+                }
+            });
 
         } catch (ApiException e) {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
@@ -88,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
     private void updateUI(GoogleSignInAccount account){
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.putExtra("name", account.getDisplayName());
+        intent.putExtra("email", account.getEmail());
         startActivity(intent);
         finish();
     }

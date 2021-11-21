@@ -34,18 +34,23 @@ public abstract class OrderRoomDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             OrderRoomDatabase.class, "order_database")
-//                            .addCallback(new Callback() {
-//                                @Override
-//                                public void onCreate(@NonNull SupportSQLiteDatabase db) {
-//                                    super.onCreate(db);
-//                                    databaseWriteExecutor.execute(() ->{
-//                                        PersonDTO user = new PersonDTO();
-//                                        user.setEmail("user@mirea.ru");
-//                                        user.setPassword("user");
-//
-//                                    });
-//                                }
-//                            })
+                            .addCallback(new Callback() {
+                                @Override
+                                public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                                    super.onCreate(db);
+                                    databaseWriteExecutor.execute(() ->{
+                                        PersonDTO user = new PersonDTO();
+                                        user.setEmail("admin");
+                                        user.setPassword("admin");
+                                        user.setRole("admin");
+                                        user.setFirstName("FNAdmin");
+                                        user.setLastName("LNAdmin");
+
+                                        getDatabase(context).personDAO().addPerson(user);
+
+                                    });
+                                }
+                            })
                             .build();
                 }
             }

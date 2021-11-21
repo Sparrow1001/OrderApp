@@ -17,6 +17,8 @@ public class OrderDTO {
     @ColumnInfo
     public String customer;
     @ColumnInfo
+    public String customerEmail;
+    @ColumnInfo
     public String place;
     @ColumnInfo
     public String arrivalTime;
@@ -33,7 +35,7 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
-    public OrderDTO(String customer, String place, String arrivalTime, int numOfVisitors, int timeOfStay, String chooseFood, String address) {
+    public OrderDTO(String customer, String customerEmail, String place, String arrivalTime, int numOfVisitors, int timeOfStay, String chooseFood, String address) {
         this.customer = customer;
         this.place = place;
         this.arrivalTime = arrivalTime;
@@ -41,6 +43,15 @@ public class OrderDTO {
         this.timeOfStay = timeOfStay;
         this.chooseFood = chooseFood;
         this.address = address;
+        this.customerEmail = customerEmail;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
     public String getAddress() {
