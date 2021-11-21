@@ -26,4 +26,8 @@ public class LoginViewModel extends AndroidViewModel {
         return rep.getPersonByEmailAndPassword(email, password);
     }
 
+    public LiveData<PersonDTO> getPersonByEmail(String email){
+        return rep.getPersonByEmail(email);
+    }
+
 }

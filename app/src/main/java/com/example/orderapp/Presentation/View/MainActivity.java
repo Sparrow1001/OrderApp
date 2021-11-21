@@ -49,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        MapKitFactory.setApiKey(BuildConfig.YANDEX_API_KEY);
-        MapKitFactory.initialize(this);
+
+        try {
+            MapKitFactory.setApiKey(BuildConfig.YANDEX_API_KEY);
+            MapKitFactory.initialize(this);
+        }catch (AssertionError error){}
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -169,6 +172,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();
                     }
@@ -178,10 +182,6 @@ public class MainActivity extends AppCompatActivity {
     private void showExitDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Вы уверены что хотите выйти из аккаунта?");
-//        LinearLayout linearLayout = new LinearLayout(MainActivity.this);
-//
-//        linearLayout.setPadding(10, 10, 10 ,10);
-//        builder.setView(linearLayout);
 
         builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
             @Override

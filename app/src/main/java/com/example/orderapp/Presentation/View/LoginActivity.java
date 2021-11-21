@@ -115,14 +115,20 @@ public class LoginActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             loginViewModel = new LoginViewModel(getApplication());
 
-            PersonDTO person = new PersonDTO();
-            person.setEmail(account.getEmail());
-            person.setFirstName(account.getGivenName());
-            person.setLastName(account.getFamilyName());
-            person.setRole("user");
-            loginViewModel.insertPerson(person);
-
-            updateUI(account);
+            loginViewModel.getPersonByEmail(account.getEmail()).observe(this, new Observer<PersonDTO>() {
+                @Override
+                public void onChanged(PersonDTO personDTO) {
+                    if (personDTO == null) {
+                        PersonDTO person = new PersonDTO();
+                        person.setEmail(account.getEmail());
+                        person.setFirstName(account.getGivenName());
+                        person.setLastName(account.getFamilyName());
+                        person.setRole("user");
+                        loginViewModel.insertPerson(person);
+                    }
+                    updateUI(account);
+                }
+            });
 
         } catch (ApiException e) {
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
