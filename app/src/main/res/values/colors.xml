@@ -10,4 +10,5 @@
     <color name="blue">#2196F3</color>
     <color name="grey">#424649</color>
     <color name="dark_grey">#1A1B1C</color>
+    <color name="my_spinner_text_color">#FFFFFFFF</color>
 </resources>

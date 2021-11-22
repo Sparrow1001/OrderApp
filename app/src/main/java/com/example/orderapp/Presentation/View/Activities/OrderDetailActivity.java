@@ -1,4 +1,4 @@
-package com.example.orderapp.Presentation.View;
+package com.example.orderapp.Presentation.View.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;

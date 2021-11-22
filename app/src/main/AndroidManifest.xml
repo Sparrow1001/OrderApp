@@ -14,10 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OrderApp">
         <activity
-            android:name=".Presentation.View.RegisterActivity"
+            android:name=".Presentation.View.Activities.AdminTableActivity"
             android:exported="true" />
         <activity
-            android:name=".Presentation.View.LoginActivity"
+            android:name=".Presentation.View.Activities.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.View.Activities.RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Presentation.View.Activities.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.OrderApp.NoActionBar">
             <intent-filter>
@@ -27,13 +33,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Presentation.View.OrderDetailActivity"
+            android:name=".Presentation.View.Activities.OrderDetailActivity"
             android:exported="true" />
         <activity
-            android:name=".Presentation.View.AddOrderActivity"
+            android:name=".Presentation.View.Activities.AddOrderActivity"
             android:exported="true" />
         <activity
-            android:name=".Presentation.View.MainActivity"
+            android:name=".Presentation.View.Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
