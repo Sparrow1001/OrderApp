@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         orderViewModel.getPersonByEmail(email).observe(this, new Observer<PersonDTO>() {
             @Override
             public void onChanged(PersonDTO personDTO) {
-                if (personDTO.getRole().equals("admin")){
+                if (personDTO.getRole().equals("admin") || personDTO.getRole().equals("moder")){
                     orderViewModel.getAllOrders().observe(MainActivity.this, new Observer<List<OrderDTO>>() {
                         @Override
                         public void onChanged(List<OrderDTO> orders) {
