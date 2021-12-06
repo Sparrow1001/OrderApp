@@ -1,12 +1,10 @@
-package com.example.orderapp.Presentation.View;
+package com.example.orderapp.Presentation.View.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,13 +13,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.InputType;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.orderapp.BuildConfig;
 import com.example.orderapp.Repository.Model.OrderDTO;
@@ -45,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private OrderViewModel orderViewModel;
     private String name;
     private String email;
-    private ImageButton exitBt;
+    private ImageButton exitBt, profileBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         exitBt = findViewById(R.id.exitBt);
+        profileBt = findViewById(R.id.profileBt);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView_orders);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -78,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         orderViewModel.getPersonByEmail(email).observe(this, new Observer<PersonDTO>() {
             @Override
             public void onChanged(PersonDTO personDTO) {
-                if (personDTO.getRole().equals("admin")){
+                if (personDTO.getRole().equals("admin") || personDTO.getRole().equals("moder")){
                     orderViewModel.getAllOrders().observe(MainActivity.this, new Observer<List<OrderDTO>>() {
                         @Override
                         public void onChanged(List<OrderDTO> orders) {
@@ -104,6 +98,29 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("name", name);
                 intent.putExtra("email", email);
                 startActivity(intent);
+            }
+        });
+
+        profileBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                orderViewModel.getPersonByEmail(email).observe(MainActivity.this, new Observer<PersonDTO>() {
+                    @Override
+                    public void onChanged(PersonDTO personDTO) {
+
+                        if (personDTO.getRole().equals("admin") || personDTO.getRole().equals("moder")){
+                            Intent intent = new Intent(MainActivity.this, AdminTableActivity.class);
+                            startActivity(intent);
+                        }else{
+                            Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                            startActivity(intent);
+                        }
+
+                    }
+                });
+
+
             }
         });
 

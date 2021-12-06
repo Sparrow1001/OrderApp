@@ -1,4 +1,4 @@
-package com.example.orderapp.Presentation.View;
+package com.example.orderapp.Presentation.View.Activities;
 
 import static android.content.ContentValues.TAG;
 

@@ -9,6 +9,8 @@ import androidx.room.Update;
 
 import com.example.orderapp.Repository.Model.PersonDTO;
 
+import java.util.List;
+
 @Dao
 public interface PersonDAO {
 
@@ -26,5 +28,8 @@ public interface PersonDAO {
 
     @Query("SELECT * FROM 'person' WHERE email = :email")
     LiveData<PersonDTO> getPersonByEmail(String email);
+
+    @Query("SELECT * FROM 'person'")
+    LiveData<List<PersonDTO>> getAllPersons();
 
 }
